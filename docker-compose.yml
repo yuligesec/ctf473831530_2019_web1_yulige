@@ -1,0 +1,36 @@
+version: "2"
+services:
+
+  web1:
+    build: ./web1
+    ports: 
+      - "12345:80"
+    networks:
+      ctf473831530:
+        ipv4_address: 172.11.243.172
+    restart: always
+
+  web2:
+    build: ./web2
+    command: su -m ctf -c "python3 /var/www/yuligeeeeeee/app.py"
+    environment:
+      HINT: 'mysql_user_is_yuligeeee123321'
+    networks:
+      ctf473831530:
+        ipv4_address: 172.11.243.81
+    restart: always
+
+  web3:
+    build: ./web3
+    networks:
+      ctf473831530:
+        ipv4_address: 172.11.243.218
+    restart: always
+
+networks:
+  ctf473831530:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.11.243.0/24

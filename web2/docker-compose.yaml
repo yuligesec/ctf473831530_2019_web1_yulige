@@ -1,0 +1,12 @@
+services:
+  test:
+    build: .
+    command: su -m ctf -c "python3 /var/www/yuligeeeeeee/app.py"
+    environment:
+      HINT: 'mysql_user_is_yuligeeee123321'
+    labels:
+      '5000': http://IP:PORT
+    ports:
+    - 11111:5000
+version: '2'
+

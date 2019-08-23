@@ -1,0 +1,18 @@
+FROM ubuntu:16.04
+
+RUN sed -i "s/http:\/\/archive.ubuntu.com/http:\/\/mirrors.aliyun.com/g" /etc/apt/sources.list
+RUN apt-get update && apt-get install -y \
+    python3 vim iputils-ping net-tools curl netcat-traditional \
+    python3-pip
+
+RUN pip3 install flask
+RUN echo "export HINT='mysql_user_is_yuligeeee123321'" >> /etc/profile 
+WORKDIR /var/www/yuligeeeeee/
+ADD ./src /var/www/yuligeeeeee/
+COPY ./start.sh /etc
+RUN chmod u+x /etc/start.sh
+RUN useradd -m ctf
+RUN chown -R root:ctf /var/www/yuligeeeeee/
+RUN chmod -R 755 /var/www/yuligeeeeee/
+EXPOSE 5000
+CMD ["/etc/start.sh"]

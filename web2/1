@@ -1,0 +1,8 @@
+version: "2"
+services:
+  flask:
+    build: .
+    environment:
+      HINT: 'mysql_user_is_yuligeeee123321'
+    ports:
+      - "1234:5000"
